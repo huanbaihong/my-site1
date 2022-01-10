@@ -1,7 +1,7 @@
 <template>
   <ul class="contact-container">
     <li>
-      <a class="github">
+      <a class="github" href = "">
         <div class="icon">
           <Icon type="github" />
         </div>
@@ -9,7 +9,7 @@
       </a>
     </li>
     <li>
-      <a class="email">
+      <a class="email" href = "mailto:12345678@qq.com">
         <div class="icon">
           <Icon type="email" />
         </div>
@@ -17,7 +17,7 @@
       </a>
     </li>
     <li>
-      <a class="qq">
+      <a class="qq" href="tencent://message/?Menu=yes&uin=3263023350&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45">
         <div class="icon">
           <Icon type="qq" />
         </div>

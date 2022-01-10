@@ -126,3 +126,39 @@
 > 2. 如何实现点击弹出发送邮件？
 >
 >    设置超链接为：mailto:邮件地址
+
+# SiteAside
+
+<img src = "http://mdrs.yuanjin.tech/img/20201130200148.png" alt = "sitea-side" style = "zoom:33%">
+
+网站侧边栏
+宽度和高度撑满外层容器
+
+# Layout
+
+示例
+```html
+<Layout>
+	<template #left>
+  	<div>
+      左边栏区域，宽度适应内容，溢出隐藏
+    </div>
+  </template>
+  <div>
+      主区域，宽度占满剩余空间，溢出隐藏
+  </div>
+  <template #right>
+  	<div>
+      右边栏区域，宽度适应内容，溢出隐藏
+    </div>
+  </template>
+</Layout>
+```
+<img src="http://mdrs.yuanjin.tech/img/20201202154014.png" alt="image-20201202154014492" style="zoom:40%;" />
+
+### 插槽
+| 插槽名 |  含义   |
+| ----- | --------|
+|  left | 左侧边栏  |
+|  default | 主区域  |
+|  right  |  右侧边栏 |
