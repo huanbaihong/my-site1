@@ -1,15 +1,17 @@
 <template>
   <nav class="menu-container">
-       <a 
+       <RouterLink
+       :to = "{name: item.name}"
        v-for="item in items"
-       :key = "item.link"
-       :href="item.link"
-       :class = "{selected: isSelected(item)}">
+       :key = "item.name"
+       :exact = "item.exact"
+       active-class="selected"
+       exact-active-class="">
            <div class = "icon">
                 <Icon :type = "item.icon"/>
            </div>
             <span>{{ item.title }}</span>
-        </a>
+       </RouterLink>
   </nav>
 </template>
 
@@ -23,45 +25,39 @@ export default {
         return {
             items: [
                 {
-                    link: "/",
+                    name: "Home",
                     title: "首页",
                     icon: "home",
+                    exact: true,
                 },
                 {
-                    link: "/blog",
+                    name: "Blog",
                     title: "文章",
                     icon: "blog",
-                    startWith: true,
+                    exact: false,
                 },
                 {
-                    link: "/about",
+                    name: "About",
                     title: "关于我",
                     icon: "about",
+                     exact: true,
                 },
                 {
-                    link: "/project",
+                    name: "Project",
                     title: "项目&效果",
                     icon: "code",
+                     exact: true,
                 },
                 {
-                    link: "/message",
+                    name: "Message",
                     title: "留言板",
                     icon: "message",
+                     exact: true,
                 },
             ],
         }
     },
-    methods: {
-       isSelected(item){
-           var link = item.link.toLowerCase();
-           var curPath = location.pathname.toLowerCase();
-           if(item.startWith){
-               return curPath.startsWith(link);
-           }else{
-                return curPath === link;
-           }
-        }
-    }
+
 }
 </script>
 
