@@ -20,7 +20,7 @@ const classMap = {
     about: "iconset_about_hov",
     arrowDown: "icontubiaozhizuo-",
     weixin: "iconweixin",
-    xinxi: "iconxinxi",
+    info: "iconxinxi",
 }
 export default {
     props: {
