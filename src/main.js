@@ -7,6 +7,10 @@ import "./styles/global.less";
 import showMessage  from "@/utils/showMessage";
 Vue.prototype.$showMessage = showMessage;
 
+//注册全局指令v-loading
+import vLoading from "./directives/loading";
+Vue.directive("loading", vLoading);
+
 new Vue({
   router,
   store,

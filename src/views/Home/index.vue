@@ -1,5 +1,6 @@
 <template>
   <div 
+  v-loading = "isLoading"
   class="home-container" 
   ref="container"
   @wheel = "handleWheel">
@@ -7,7 +8,7 @@
     class="carousel-container"
     :style="{marginTop,}"
     @transitionend = "handleTransitionEnd">
-      <li v-for="item in banners" :key="item.id">
+      <li v-for="item in data" :key="item.id">
         <CarouselItem :carousel = "item"/>
       </li>
     </ul>
@@ -19,13 +20,13 @@
     </div>
     <div 
     class="icon icon-down"
-    v-show = "index < banners.length - 1"
+    v-show = "index < data.length - 1"
     @click = "handleClick(index + 1)">
       <Icon type="arrowDown" />
     </div>
     <ul class="indicator">
       <li 
-      v-for="(item, i) in banners" 
+      v-for="(item, i) in data" 
       :key="item.id"
       :class = "{active: index === i}"
       @click = "handleClick(i)"></li>
@@ -37,10 +38,11 @@
 import CarouselItem from "./CarouselItem";
 import { getBanners } from "@/api/banner";
 import Icon from "@/components/Icon";
+import fetchData from "@/mixins/fetchData.js";
 export default {
+  mixins: [fetchData([])],
   data() {
     return {
-      banners: [],
       index: 0,
       containerHeight: 0,
       switching: false,
@@ -49,9 +51,6 @@ export default {
   components: {
     CarouselItem,
     Icon,
-  },
-  async created() {
-    this.banners = await getBanners();
   },
   mounted(){
     this.containerHeight = this.$refs.container.clientHeight;
@@ -76,7 +75,7 @@ export default {
       if(e.deltaY < -5 && this.index > 0){
         this.switching = true;
         this.index --;
-      }else if(e.deltaY > 5 && this.index < this.banners.length - 1){
+      }else if(e.deltaY > 5 && this.index < this.data.length - 1){
         this.switching = true;
         this.index ++;
       }
@@ -86,6 +85,9 @@ export default {
     },
     handleResize(){
       this.containerHeight = this.$refs.container.clientHeight;
+    },
+    async fetchData(){
+      return await getBanners();
     }
   }
 };
