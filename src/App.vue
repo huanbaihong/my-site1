@@ -2,7 +2,9 @@
   <div class="app-container">
     <Layout>
       <template #left>
-        <SiteAside />
+        <div class="aside">
+          <SiteAside />
+        </div>
       </template>
       <template #default>
         <RouterView />
@@ -21,12 +23,12 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import "./styles/mixins.less";
 .app-container {
   .self-fill(fixed);
 }
-.left {
+.aside {
   width: 250px;
   height: 100%;
 }
